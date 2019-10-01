@@ -89,7 +89,7 @@ class torcheck:
 			dq.reverse()
 			return string.join(dq, '.')
 		else:
-			raise TypeError, ip + ' is not an IP address'
+			raise(TypeError, ip + ' is not an IP address')
 
 	def query(self, remoteip, myip=None, myport='80'):
 		# Queries the exitlist to see if the IP address might have
@@ -116,12 +116,12 @@ class torcheck:
 		if response == '127.0.0.2':
 			return True
 		else:
-			raise KeyError, 'Unknown response ' + `response`
+			raise(KeyError, 'Unknown response ' + response)
 
 def main():
 	import sys
 	if len(sys.argv) < 2:
-		print 'usage: ' + sys.argv[0] + ' <remote ip address> [<port> [<local ip address>]]'
+		print('usage: ' + sys.argv[0] + ' <remote ip address> [<port> [<local ip address>]]')
 		sys.exit(1)
 	remoteip = sys.argv[1]
 	try:
@@ -134,7 +134,7 @@ def main():
 		port = '80'
 	validator = torcheck()
 
-	print validator.query(remoteip, localip, port)
+	print(validator.query(remoteip, localip, port))
 
 if __name__ == "__main__":
 	main()
